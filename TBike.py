@@ -2,8 +2,13 @@ from TStrip import TStrip
 import time
 
 
+
+##
+## TBike
+## Runs the bike lights
 class TBike(object):
 
+    # init
     def __init__(self):
         # Init the strip and set up our geometry
         self.strip = TStrip(44)
