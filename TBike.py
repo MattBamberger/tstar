@@ -11,28 +11,46 @@ class TBike(object):
     # init
     def __init__(self, dimmer):
         # Init the strip and set up our geometry
-        self.strip = TStrip(44, dimmer)
-        self.iHeadLight = 19
-        self.iTailLight = 39
+        self.strip = TStrip(87, dimmer)
+        self.iHeadLight = 36
+        self.iTailLight1 = 75
+        self.iTailLight2 = 76
         self.sides = [
-            (18, 20),
-            (17, 21),
-            (16, 22),
-            (15, 23),
-            (14, 24),
-            (13, 25),
-            (12, 26),
-            (11, 27),
-            (10, 28),
-            ( 9, 29),
-            ( 8, 30),
-            ( 7, 31),
-            ( 6, 32), 
-            ( 5, 33), 
-            ( 4, 34), 
-            ( 3, 35),
-            ( 2, 36),
-            ( 1, 37) ]
+            (34, 38),
+            (33, 39),
+            (32, 40),
+            (31, 41),
+            (30, 42),
+            (29, 43),
+            (28, 44),
+            (27, 45),
+            (26, 46),
+            (25, 47),
+            (24, 48),
+            (23, 49),
+            (22, 50),
+            (21, 51),
+            (20, 52),
+            (19, 53),
+            (18, 54),
+            (17, 55),
+            (16, 56),
+            (15, 57),
+            (14, 58),
+            (13, 59),
+            (12, 60),
+            (11, 61),
+            (10, 62),
+            ( 9, 63),
+            ( 8, 64),
+            ( 7, 65),
+            ( 6, 66), 
+            ( 5, 67), 
+            ( 4, 68), 
+            ( 3, 69),
+            ( 2, 70),
+            ( 1, 71),
+            ( 0, 72) ]
         self.sideLevels = [0.0 for i in range(len(self.sides))]
 
         # Configure ourselves
@@ -46,7 +64,8 @@ class TBike(object):
 
         # Init ourselves
         self.strip.setPixel(self.iHeadLight, self.headLightColor)
-        self.strip.setPixel(self.iTailLight, self.tailLightColor)
+        self.strip.setPixel(self.iTailLight1, self.tailLightColor)
+        self.strip.setPixel(self.iTailLight2, self.tailLightColor)
         self.sparkPos = 0
 
         return
