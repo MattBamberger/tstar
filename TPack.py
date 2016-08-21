@@ -1,4 +1,4 @@
-from Tornus.TStrip import TStrip
+from tstar.TStrip import TStrip
 import time
 
 
