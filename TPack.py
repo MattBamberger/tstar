@@ -57,7 +57,7 @@ class TPack(object):
     def run1(self):
         # Move the spark
         self.strip.setGridPixel(self.xSpark, self.ySpark,(0x10, 0, 0x10))
-        self.sparkPos += (sparkSpeed / self.strip.frameRate)
+        self.sparkPos += (self.sparkSpeed / self.strip.frameRate)
         if self.sparkPos >= 60:
             self.sparkPos = 0
 
@@ -79,5 +79,5 @@ class TPack(object):
 
 
 
-pack = TPack()
+pack = TPack(0, 1)
 pack.run()

@@ -86,7 +86,7 @@ class TStrip(object):
     # paint
     # Sets the entire strip to a specified color
     def paint(self, color):
-        for i in range(0, self.cPixels):
+        for i in range(0, len(self.pixels)):
             self.pixels[i] = color
         return
 
@@ -105,7 +105,7 @@ class TStrip(object):
         self.spi.xfer2([0x00, 0x00, 0x00, 0x00])
 
         # LEDs
-        for i in range(0, self.cPixels):
+        for i in range(0, len(self.pixels)):
             self.spi.xfer2([0xff])
             self.writeBrightness(self.pixels[i][2]) # B
             self.writeBrightness(self.pixels[i][1]) # G
@@ -113,7 +113,7 @@ class TStrip(object):
 
         # End block
         self.spi.xfer2([0xff, 0xff, 0xff, 0xff])
-        for i in range(0, 1 + (self.cPixels >> 5)):
+        for i in range(0, 1 + (len(self.pixels) >> 5)):
             self.spi.xfer2([0x00, 0x00, 0x00, 0x00])
 
         # Sleep until it's time for the next frame

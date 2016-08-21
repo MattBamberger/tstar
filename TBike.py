@@ -9,9 +9,9 @@ import time
 class TBike(object):
 
     # init
-    def __init__(self):
+    def __init__(self, dimmer):
         # Init the strip and set up our geometry
-        self.strip = TStrip(44)
+        self.strip = TStrip(44, dimmer)
         self.iHeadLight = 19
         self.iTailLight = 39
         self.sides = [
@@ -91,5 +91,5 @@ class TBike(object):
 
 
 
-bike = TBike()
+bike = TBike(0)
 bike.run()
