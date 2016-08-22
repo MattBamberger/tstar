@@ -19,7 +19,7 @@ class TStrip(object):
         self.spi.max_speed_hz=8000000
 
         # Create the pixel array
-        self.pixels = [(0, 0, 0) for i in range(0, cPixels)]
+        self.pixels = [(0.0, 0.0, 0.0) for i in range(0, cPixels)]
 
         # Pin the entire system to 25 full-brightness LEDs or equivalent
         # This prevents us from overloading the power supply.
@@ -59,7 +59,8 @@ class TStrip(object):
     # writeBrightness
     # Push a single brightness byte down the wire, capping it if we've reached
     # our maximum allowable brightness.
-    def writeBrightness(self, brightness):
+    def writeBrightness(self, brightnessIn):
+        brightness = int(brightnessIn)
         brightness >>= self.dimmer
         if self.cumulativeBrightness > self.maxTotalBrightness:
             brightness = 0
@@ -90,14 +91,35 @@ class TStrip(object):
             self.pixels[i] = color
         return
 
+    # fade
+    # Fades the entire strip by a given amount
+    def fade(self, retain):
+        for iPixel in range(len(self.pixels)):
+            pixel = self.pixels[iPixel]
+            self.pixels[iPixel] = (pixel[0] * retain, pixel[1] * retain, pixel[2] * retain)
 
+
+    # drawBall
+    # Draws a ball at a specified location
+    def drawBall(self, xCenter, yCenter, radius, color):
+        distMax = radius * radius
+        for x in range(int(xCenter - radius - 1), int(xCenter + radius + 2)):
+            for y in range(int(yCenter - radius - 1), int(yCenter + radius + 2)):
+                dist = (xCenter - x) * (xCenter - x) + (yCenter - y) * (yCenter - y)
+                if dist <= distMax:
+                    if x >= 0 and x <= 15 and y >= 0 and y <= 15:
+                        self.setGridPixel(x, y, color)
+
+        
     # startFrame
     # Call this at the start of each frame
     def startFrame(self):
         self.frameStartTime = time.time()
         return
     
-        
+
+    # endFrame
+    # We're done with this frame. Push all the pixel data down the wire.
     def endFrame(self):
         self.cumulativeBrightness = 0
         

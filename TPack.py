@@ -35,7 +35,20 @@ class TPack(object):
         self.sparkPos = 0.0
         self.xSpark = 0
         self.ySpark = 0
-        return        
+        return
+
+
+    # init2
+    # Inits the speedball animation
+    def init2(self):
+        self.ballX = 0
+        self.ballY = 0
+        self.ballDX = 1.2
+        self.ballDY = 0.73
+        self.ballColor = (64, 0, 64)
+
+        self.strip.paint((0, 0, 0))
+        return
 
 
     # run
@@ -78,6 +91,31 @@ class TPack(object):
         return
 
 
+    # run2
+    # Runs the speedball animation
+    def run2(self):
+        self.strip.fade(.80)
+        
+        self.ballX += self.ballDX
+        if self.ballX < 0:
+            self.ballX = - self.ballX
+            self.ballDX = - self.ballDX
+        if self.ballX > 15:
+            self.ballX = 15 - (self.ballX - 15)
+            self.ballDX = - self.ballDX
 
-pack = TPack(0, 1)
+        self.ballY += self.ballDY
+        if self.ballY < 0:
+            self.ballY = - self.ballY
+            self.ballDY = - self.ballDY
+        if self.ballY > 15:
+            self.ballY = 15 - (self.ballY - 15)
+            self.ballDY = - self.ballDY
+
+        self.strip.drawBall(self.ballX, self.ballY, 1.5, self.ballColor)
+        return
+
+
+
+pack = TPack(0, 2)
 pack.run()
