@@ -131,7 +131,7 @@ class TStrip(object):
                 dist = (xCenter - x) * (xCenter - x) + (yCenter - y) * (yCenter - y)
                 if dist <= distMax:
                     if x >= 0 and x <= 15 and y >= 0 and y <= 15:
-                        ratio = (1.0 - dist) / distMax
+                        ratio = 1.0 - (dist / distMax)
                         self.augmentGridPixel(x, y, (ratio * color[0], ratio * color[1], ratio * color[2]))
         return
 

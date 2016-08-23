@@ -8,7 +8,7 @@ class Spark(object):
 		self.x = 8
 		self.y = 8
 		self.color = (128.0, 128.0, 0.0)
-		self.radius = 1.5
+		self.radius = 2
 		return
 
 

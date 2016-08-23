@@ -1,5 +1,6 @@
 from TStrip import TStrip
 from ColorCycler import ColorCycler
+from Spark import Spark
 import time
 
 
@@ -23,6 +24,8 @@ class TPack(object):
             self.init1()
         elif self.animation == 2:
             self.init2()
+        elif self.animation == 3:
+            self.init3()
 
         return
 
@@ -66,7 +69,7 @@ class TPack(object):
         return
 
 
-# run
+    # run
     # Infinite loop that runs the animation
     def run(self):
         while True:
@@ -76,6 +79,8 @@ class TPack(object):
                 self.run1()
             elif self.animation == 2:
                 self.run2()
+            elif self.animation == 3:
+                self.run3()
 
             self.strip.endFrame()
 
@@ -140,5 +145,5 @@ class TPack(object):
 
 
 
-pack = TPack(0, 3)
+pack = TPack(0, 2)
 pack.run()
