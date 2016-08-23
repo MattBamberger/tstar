@@ -1,6 +1,5 @@
 from TStrip import TStrip
 from ColorCycler import ColorCycler
-from Spark import Spark
 import time
 
 
@@ -53,15 +52,6 @@ class TPack(object):
             (255.0,     0.0,        0.0),
             (0.0,       255.0,      0.0),
             ])
-
-        self.strip.paint((0, 0, 0))
-        return
-
-
-    # init3
-    # Inits a spark playground
-    def init3(self):
-        self.spark = Spark()
 
         self.strip.paint((0, 0, 0))
         return
@@ -133,13 +123,6 @@ class TPack(object):
         return
 
 
-    # run3
-    # Runs the spark playground
-    def run3(self):
-        self.spark.run(self.strip)
-        return
 
-
-
-pack = TPack(0, 2)
+pack = TPack(0, 3)
 pack.run()
