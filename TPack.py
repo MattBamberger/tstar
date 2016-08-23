@@ -63,7 +63,7 @@ class TPack(object):
     # init3
     # Inits a spark playground
     def init3(self):
-        self.spark = Spark()
+        self.spark = Spark(self.strip)
 
         self.strip.paint((0, 0, 0))
         return
