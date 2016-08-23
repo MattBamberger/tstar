@@ -1,4 +1,5 @@
 from TStrip import TStrip
+from ColorCycler import ColorCycler
 import time
 
 

@@ -90,15 +90,15 @@ class TStrip(object):
     def augmentGridPixel(self, x, y, color):
         iPixel = self.mapPixels[x][y]
 
-        red = self.pixels[i][0]
+        red = self.pixels[iPixel][0]
         if color[0] > red:
             red = color[0]
 
-        green = self.pixels[i][1]
+        green = self.pixels[iPixel][1]
         if color[1] > green:
             green = color[1]
 
-        blue = self.pixels[i][2]
+        blue = self.pixels[iPixel][2]
         if color[2] > blue:
             blue = color[2]
 
