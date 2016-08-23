@@ -57,7 +57,16 @@ class TPack(object):
         return
 
 
-    # run
+    # init3
+    # Inits a spark playground
+    def init3(self):
+        self.spark = Spark()
+
+        self.strip.paint((0, 0, 0))
+        return
+
+
+# run
     # Infinite loop that runs the animation
     def run(self):
         while True:
@@ -120,6 +129,13 @@ class TPack(object):
             self.ballDY = - self.ballDY
 
         self.strip.drawBall(self.ballX, self.ballY, 1.5, self.colorCycler.currentColor)
+        return
+
+
+    # run3
+    # Runs the spark playground
+    def run3(self):
+        self.spark.run(self.strip)
         return
 
 
