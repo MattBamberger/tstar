@@ -5,6 +5,7 @@ import time
 ##
 ## TStrip
 ## This is the base class that talks to a DotStar chain.
+## We are 
 ##
 class TStrip(object):
 
@@ -84,6 +85,28 @@ class TStrip(object):
         return
 
 
+    ## augmentGridPixel
+    # If the existing pixel is dimmer than the specified color, set it to the specified color
+    def augmentGridPixel(self, x, y, color):
+        iPixel = self.mapPixels[x][y]
+
+        red = self.pixels[i][0]
+        if color[0] > red:
+            red = color[0]
+
+        green = self.pixels[i][1]
+        if color[1] > green:
+            green = color[1]
+
+        blue = self.pixels[i][2]
+        if color[2] > blue:
+            blue = color[2]
+
+        self.pixels[iPixel] = (red, green, blue)
+        return
+
+
+
     # paint
     # Sets the entire strip to a specified color
     def paint(self, color):
@@ -108,7 +131,9 @@ class TStrip(object):
                 dist = (xCenter - x) * (xCenter - x) + (yCenter - y) * (yCenter - y)
                 if dist <= distMax:
                     if x >= 0 and x <= 15 and y >= 0 and y <= 15:
-                        self.setGridPixel(x, y, color)
+                        ratio = (1.0 - dist) / distMax
+                        self.augmentGridPixel(x, y, (ratio * color[0], ratio * color[1], ratio * color[2]))
+        return
 
         
     # startFrame
