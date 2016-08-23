@@ -22,6 +22,7 @@ class AcidRain(Spark):
         self.y = 0.0
         self.direction = .75 * math.pi
         self.speed = (10.0 + 20.0 * random.random()) / self.strip.frameRate
+        self.bounces = False
 
         value = (1 << random.randint(4, 8)) - 1
         self.colorCycler = ColorCycler(0 / self.strip.frameRate, [

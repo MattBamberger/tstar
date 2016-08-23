@@ -28,6 +28,7 @@ class Slasher(Spark):
 
         
         self.speed = 80.0 / self.strip.frameRate
+        self.bounces = False
 
         red = (1 << random.randint(4, 8)) - 1
         green = red * (.25 + .5 * random.random())

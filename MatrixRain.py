@@ -22,6 +22,7 @@ class MatrixRain(Spark):
         self.y = 0.0
         self.direction = .5 * math.pi
         self.speed = (5.0 + 10.0 * random.random()) / self.strip.frameRate
+        self.bounces = False
 
         green = (1 << random.randint(0, 8)) - 1
         self.colorCycler = ColorCycler(0 / self.strip.frameRate, [

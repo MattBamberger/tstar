@@ -28,13 +28,16 @@ class Spark(object):
         self.x += dx
         self.y += dy
 
-        if (self.x < 0 and dx < 0) or (self.x > 15 + self.radius and dx > 0) or (self.y < 0 and dy < 0) or (self.y > 15 + self.radius and dy > 0):
-            self.active = False
+        if (self.x < 0 and dx < 0) or (self.x > 16 + self.radius and dx > 0) or (self.y < 0 and dy < 0) or (self.y > 15 + self.radius and dy > 0):
+            if self.bounces:
+                self.bounce()
+            else:
+                self.active = False
 
         if self.radius == 0.0:
             x = int(self.x)
             y = int(self.y)
-            if x >= 0 and x <= 15 and y >= 0 and y <= 15:
+            if x >= 0 and x <16 and y >= 0 and y < 16:
                 self.strip.augmentGridPixel(x, y, self.colorCycler.currentColor)
         else:
             self.strip.drawBall(self.x, self.y, self.radius, self.colorCycler.currentColor)
@@ -58,3 +61,25 @@ class Spark(object):
         self.direction = random.random() * 2 * math.pi
         self.speed = 5.0 / self.strip.frameRate
         return
+
+
+    def bounce(self):
+        if self.x < 0:
+            self.x = - self.x
+            self.direction = math.pi - self.direction
+        if self.y < 0:
+            self.y = - self.y
+            self.direction = 2.0 * math.pi - self.direction
+        if self.x >= 16:
+            self.x = 16.0
+            self.direction = math.pi - self.direction
+        if self.y >= 16.0:
+            self.y = 16.0
+            self.direction = 2.0 * math.pi - self.direction
+        self.direction = self.direction + math.pi * (-0.1 + 0.2 * random.random())
+        while self.direction < 0:
+            self.direction += 2.0 * math.pi
+        while self.direction >= 2.0 * math.pi:
+            self.direction -= 2.0 * math.pi
+        return
+
