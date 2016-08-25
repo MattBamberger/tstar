@@ -10,7 +10,7 @@ conf = 1
 # Options
 dimmer = 0
 packAnimation = 1
-packCycleTime = 10
+packCycleTime = 60
 
 
 
