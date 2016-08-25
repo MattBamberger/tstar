@@ -144,8 +144,3 @@ class TPack(object):
     # Runs the spark playground
     def run3(self):
         return
-
-
-
-pack = TPack(0, 1, 10)
-pack.run()

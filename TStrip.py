@@ -62,7 +62,7 @@ class TStrip(object):
     # our maximum allowable brightness.
     def writeBrightness(self, brightnessIn):
         brightness = int(brightnessIn)
-        brightness >>= self.dimmer
+        brightness = brightness >> self.dimmer
         if self.cumulativeBrightness > self.maxTotalBrightness:
             brightness = 0
         self.spi.xfer2([brightness])

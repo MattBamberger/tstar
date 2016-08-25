@@ -109,6 +109,3 @@ class TBike(object):
 
 
 
-
-bike = TBike(0)
-bike.run()
