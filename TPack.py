@@ -24,12 +24,13 @@ from Fireball import Fireball
 class TPack(object):
   
     # init      
-    def __init__(self, dimmer, animation):
+    def __init__(self, dimmer, animation, cycleTime):
         # Init the strip as a matrix
         self.strip = TStrip(256, dimmer)
         self.strip.setMatrixWinding(16, 16)
+        self.cycleTime = cycleTime
 
-        self.setAnimation(1)
+        self.setAnimation(animation)
         return
 
 
@@ -122,7 +123,7 @@ class TPack(object):
     def run(self):
         while True:
             elapsedTime = time.time() - self.startTime
-            if elapsedTime >= 10.0:
+            if elapsedTime >= self.cycleTime:
                 self.animation += 1
                 if self.animation > 6:
                     self.animation = 1
@@ -146,5 +147,5 @@ class TPack(object):
 
 
 
-pack = TPack(0, 6)
+pack = TPack(0, 1, 10)
 pack.run()
